@@ -1,7 +1,7 @@
 
 Feature: Books module
   As a students, I should be able to borrow book
-@tay @db
+@tay
   Scenario: Student borrow new book
     Given the "student" on the home page
     And the user navigates to "Books" page
