@@ -3,6 +3,7 @@ package com.library.steps;
 import com.library.pages.DashBoardPage;
 import com.library.pages.LoginPage;
 import com.library.utility.BrowserUtil;
+import com.library.utility.ConfigurationReader;
 import com.library.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,16 +16,22 @@ public class LoginStepDefs {
     DashBoardPage dashBoardPage = new DashBoardPage();
     String actualUserName;
     String email;
-    @Given("the user logged in  {string} and {string}")
-    public void the_user_logged_in_and(String email, String password) {
-        BrowserUtil.waitFor(2);
-       loginPage.login(email,password);
-        BrowserUtil.waitFor(2);
-        //get email assign to global
-        this.email=email;
 
+    @Given("the user logged in as  {string}")
+    public void theUserLoggedInAs(String userType) {
+        String email = null;
+        String password = null;
+        if(userType.equalsIgnoreCase("student")){
+            email= ConfigurationReader.getProperty("student_username");
+            password=ConfigurationReader.getProperty("student_password");
+        } else if (userType.equalsIgnoreCase("librarian")) {
+            email=ConfigurationReader.getProperty("librarian_username");
+            password=ConfigurationReader.getProperty("librarian_password");
 
+        }
     }
+
+
     @When("user gets username  from user fields")
     public void user_gets_username_from_user_fields() {
         actualUserName = dashBoardPage.accountHolderName.getText();
@@ -48,5 +55,6 @@ public class LoginStepDefs {
 
 
     }
+
 
 }
