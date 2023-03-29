@@ -29,6 +29,7 @@ public class LoginStepDefs {
             password=ConfigurationReader.getProperty("librarian_password");
 
         }
+        new LoginPage().login(userType);
     }
 
 
