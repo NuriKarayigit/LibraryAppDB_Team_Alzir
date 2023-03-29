@@ -16,11 +16,11 @@ public class LoginStepDefs {
     DashBoardPage dashBoardPage = new DashBoardPage();
     String actualUserName;
     String email;
-
+    String password;
     @Given("the user logged in as  {string}")
     public void theUserLoggedInAs(String userType) {
-        String email = null;
-        String password = null;
+       String email = null;
+       String password = null;
         if(userType.equalsIgnoreCase("student")){
             email= ConfigurationReader.getProperty("student_username");
             password=ConfigurationReader.getProperty("student_password");
@@ -29,7 +29,7 @@ public class LoginStepDefs {
             password=ConfigurationReader.getProperty("librarian_password");
 
         }
-        new LoginPage().login(userType);
+        new LoginPage().login(email,password);
     }
 
 

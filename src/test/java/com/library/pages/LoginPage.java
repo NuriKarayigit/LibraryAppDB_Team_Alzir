@@ -27,7 +27,7 @@ public class LoginPage {
     public void login(String userType){
 
         String username=ConfigurationReader.getProperty(userType+"_username");
-        String password=ConfigurationReader.getProperty("password");
+        String password="libraryUser";
 
 
         emailBox.sendKeys(username);
@@ -36,9 +36,9 @@ public class LoginPage {
 
     }
 
-    public void login(String username,String password){
+    public void login(String email,String password){
 
-        emailBox.sendKeys(username);
+        emailBox.sendKeys(email);
         passwordBox.sendKeys(password);
         loginButton.click();
 
