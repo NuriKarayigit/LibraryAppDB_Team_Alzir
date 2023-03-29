@@ -15,7 +15,9 @@ public class LoginPage {
 
     @FindBy(id = "inputEmail")
     public WebElement emailBox;
-
+/*
+...
+ */
     @FindBy(id = "inputPassword")
     public WebElement passwordBox;
 
